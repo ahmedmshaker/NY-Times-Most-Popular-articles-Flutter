@@ -14,7 +14,11 @@ class ArticleListItem extends StatelessWidget {
       padding: EdgeInsets.all(16.0),
       child: Row(
         children: <Widget>[
-          CircleAvatar(backgroundColor: Colors.grey,backgroundImage: NetworkImage(article.mediaMetaDataList[2].url),),
+          Container(
+            width: 60.0,
+              height: 60.0,
+              margin:EdgeInsets.all(8.0),
+              child: CircleAvatar(backgroundColor: Colors.grey,backgroundImage: NetworkImage(article.mediaMetaDataList[2].url),)),
           Expanded(child: buildTextWidget()),
           Icon(Icons.keyboard_arrow_right ,)
 
@@ -26,19 +30,22 @@ class ArticleListItem extends StatelessWidget {
 
   Widget buildTextWidget(){
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(article.title , maxLines: 2,overflow: TextOverflow.ellipsis,),
+        Text(article.title , maxLines: 2,overflow: TextOverflow.ellipsis,style: TextStyle(color: Colors.black,fontSize: 18),),
         SizedBox(height: 8.0,),
         Text(article.description , maxLines: 1,overflow: TextOverflow.ellipsis,),
+        SizedBox(height: 4,),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(article.source),
+            Text(article.source , style: TextStyle(fontSize: 14.0),),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.date_range),
-                Text(article.date)
+                Icon(Icons.date_range , size: 20,),
+                Text(article.date , style: TextStyle(fontSize: 10.0),)
               ],
             )
 
