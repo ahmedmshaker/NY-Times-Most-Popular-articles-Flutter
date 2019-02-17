@@ -29,7 +29,7 @@ class _ArticlesDetailsFragmentState extends State<ArticlesDetailsFragment> {
                         fontSize: 16.0,
                       )),
                   background: Image.network(
-                    "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    widget.article.mediaMetaDataList[4].url,
                     fit: BoxFit.cover,
                   )),
             ),
