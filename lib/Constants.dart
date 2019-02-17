@@ -7,4 +7,4 @@ const String APPBAR_TITLE = "NY The Most Popular Articles";
 
 const String SOURCE = "Source : ";
 
-const String CREATED_BY = "Created By";
+const String CREATED_BY = "Created By : ";

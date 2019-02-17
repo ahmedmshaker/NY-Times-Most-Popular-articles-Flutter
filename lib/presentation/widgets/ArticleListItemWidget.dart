@@ -11,7 +11,7 @@ class ArticleListItem extends StatelessWidget {
   ArticleListItem({@required this.article});
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: (){
         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ArticlesDetailsFragment(article: article,)));
       },

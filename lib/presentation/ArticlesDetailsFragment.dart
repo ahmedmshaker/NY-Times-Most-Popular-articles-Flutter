@@ -20,10 +20,11 @@ class _ArticlesDetailsFragmentState extends State<ArticlesDetailsFragment> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                expandedHeight: 200.0,
+                expandedHeight: 250.0,
                 floating: false,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
                     title: Text(APPBAR_TITLE,
                         style: TextStyle(
                           color: Colors.white,
@@ -41,23 +42,26 @@ class _ArticlesDetailsFragmentState extends State<ArticlesDetailsFragment> {
   }
 
   Widget buildBody() {
-    return Column(
-      children: <Widget>[
-        Text(widget.article.title,
-            style: TextStyle(color: Colors.black, fontSize: 18)),
-        SizedBox(
-          height: 16,
-        ),
-        Text(widget.article.description, style: TextStyle(fontSize: 16)),
-        SizedBox(
-          height: 8,
-        ),
-        buildCreatedByRow(CREATED_BY, widget.article.writtenBy),
-        SizedBox(
-          height: 4,
-        ),
-        buildCreatedByRow(SOURCE, widget.article.source)
-      ],
+    return Container(
+      margin: EdgeInsets.all(8.0),
+      child: ListView(
+        children: <Widget>[
+          Text(widget.article.title,
+              style: TextStyle(color: Colors.black, fontSize: 22,)),
+          SizedBox(
+            height: 16,
+          ),
+          Text(widget.article.description, style: TextStyle(fontSize: 16)),
+          SizedBox(
+            height: 8,
+          ),
+          buildCreatedByRow(CREATED_BY, widget.article.writtenBy),
+          SizedBox(
+            height: 4,
+          ),
+          buildCreatedByRow(SOURCE, widget.article.source)
+        ],
+      ),
     );
   }
 
@@ -66,11 +70,14 @@ class _ArticlesDetailsFragmentState extends State<ArticlesDetailsFragment> {
       children: <Widget>[
         Text(
           title,
-          style: TextStyle(color: Colors.green, fontSize: 18),
+          style: TextStyle(color: Colors.green, fontSize: 16),
         ),
-        Text(
-          description,
-          style: TextStyle(fontSize: 18),
+        Expanded(
+          child: Text(
+            description,
+            overflow: TextOverflow.clip,
+            style: TextStyle(fontSize: 16),
+          ),
         )
       ],
     );
