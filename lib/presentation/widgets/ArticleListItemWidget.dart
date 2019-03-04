@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:ny_times_most_pupulararticles/data/models/Article.dart';
+import 'package:ny_times_most_pupulararticles/presentation/ArticlesDetailsFragment.dart';
 
 class ArticleListItem extends StatelessWidget {
   Article article;
@@ -10,20 +11,25 @@ class ArticleListItem extends StatelessWidget {
   ArticleListItem({@required this.article});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16.0),
-      child: Row(
-        children: <Widget>[
-          Container(
-            width: 60.0,
-              height: 60.0,
-              margin:EdgeInsets.all(8.0),
-              child: CircleAvatar(backgroundColor: Colors.grey,backgroundImage: NetworkImage(article.mediaMetaDataList[2].url),)),
-          Expanded(child: buildTextWidget()),
-          Icon(Icons.keyboard_arrow_right ,)
+    return InkWell(
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ArticlesDetailsFragment(article: article,)));
+      },
+      child: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Row(
+          children: <Widget>[
+            Container(
+              width: 60.0,
+                height: 60.0,
+                margin:EdgeInsets.all(8.0),
+                child: CircleAvatar(backgroundColor: Colors.grey,backgroundImage: NetworkImage(article.mediaMetaDataList[2].url),)),
+            Expanded(child: buildTextWidget()),
+            Icon(Icons.keyboard_arrow_right ,)
 
-        ],
+          ],
 
+        ),
       ),
     );
   }
